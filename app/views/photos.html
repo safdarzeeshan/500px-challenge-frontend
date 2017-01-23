@@ -1,0 +1,7 @@
+<div class='photos'>
+    <div class="col-xs-3" ng-repeat="photo in photos | limitTo: limit">
+        <a href="#" class="thumbnail">
+             <img ng-click='enlargePhoto(photo.id)' ng-src='{{ photo.image_url }}' class="img-responsive">
+        </a>
+    </div>
+</div>

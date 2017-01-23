@@ -1,7 +1,6 @@
 # 500px-challenge
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.1.
+This version allows a user to view the popular photographs on 500px and enlrage them by clicking on the modal
 
 ## Build & development
 

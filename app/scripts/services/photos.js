@@ -29,5 +29,13 @@ angular.module('500pxChallengeApp')
         });
     };
 
+    photosFactory.$likePhoto = function(photoId) {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + 'likephoto?photoId=' + photoId,
+        });
+    };
+
     return photosFactory;
 });

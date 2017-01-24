@@ -3,5 +3,12 @@
         <a href="#" class="thumbnail">
              <img ng-click='enlargePhoto(photo.id)' ng-src='{{ photo.image_url }}' class="img-responsive">
         </a>
+        <a ng-if="userStatus === 'user'" ng-click="likePhoto(photo.id)">
+            <i ng-if="photo.voted == true" class="fa fa-heart"></i>
+            <i ng-if="photo.voted == false" class="fa fa-heart-o"></i>
+        </a>
+        <a ng-if="userStatus === 'guest'" ng-click="ctaLogin()">
+            <i class="fa fa-heart-o"></i>
+        </a>
     </div>
 </div>

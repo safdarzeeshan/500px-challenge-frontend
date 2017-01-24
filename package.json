@@ -1,7 +1,9 @@
 {
   "name": "500pxchallenge",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "connect-modrewrite": "^0.9.0"
+  },
   "repository": {},
   "devDependencies": {
     "grunt": "^0.4.5",

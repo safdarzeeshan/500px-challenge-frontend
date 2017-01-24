@@ -32,6 +32,7 @@ module.exports = function(config) {
       'bower_components/angular-ui-router/release/angular-ui-router.js',
       'bower_components/ngstorage/ngStorage.js',
       'bower_components/angular-modal-service/dst/angular-modal-service.js',
+      'bower_components/satellizer/dist/satellizer.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

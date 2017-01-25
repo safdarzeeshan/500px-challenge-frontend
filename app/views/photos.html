@@ -1,14 +1,23 @@
 <div class='photos'>
-    <div class="col-xs-3" ng-repeat="photo in photos | limitTo: limit">
-        <a href="#" class="thumbnail">
-             <img ng-click='enlargePhoto(photo.id)' ng-src='{{ photo.image_url }}' class="img-responsive">
+    <div class="photo" ng-repeat="photo in photos | limitTo: limit">
+        <a href="#" class="">
+             <img ng-click='enlargePhoto(photo.images[1].url)' ng-src='{{ photo.image_url }}' class="img-responsive">
         </a>
-        <a ng-if="userStatus === 'user'" ng-click="likePhoto(photo.id)">
-            <i ng-if="photo.voted == true" class="fa fa-heart"></i>
-            <i ng-if="photo.voted == false" class="fa fa-heart-o"></i>
-        </a>
-        <a ng-if="userStatus === 'guest'" ng-click="ctaLogin()">
-            <i class="fa fa-heart-o"></i>
-        </a>
+        <div class="photo-details">
+            <div class="photo-info">
+                <span ng-if="photo.aperture !='' && photo.aperture !=null">f {{photo.aperture}}</span>
+                <span ng-if="photo.shutter_speed !='' && photo.aperture !=null">{{photo.shutter_speed}}s</span>
+                <span ng-if="photo.iso !='' && photo.aperture !=null">ISO {{photo.iso}}</span>
+            </div>
+            <div class="photo-like">
+                <a ng-if="userStatus === 'user'">
+                    <i ng-if="photo.voted == true" class="fa fa-heart" ng-click="unlikePhoto($index, photo.id)"></i>
+                    <i ng-if="photo.voted == false" class="fa fa-heart-o" ng-click="likePhoto($index, photo.id)"></i>
+                </a>
+                <a ng-if="userStatus === 'guest'" ng-click="ctaLogin()">
+                    <i class="fa fa-heart-o"></i>
+                </a>
+            </div>
+        </div>
     </div>
 </div>

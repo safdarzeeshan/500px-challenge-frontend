@@ -27,28 +27,19 @@ angular.module('500pxChallengeApp')
         console.log(errors.data);
     })
 
-    $scope.enlargePhoto = function(photoId){
-        console.log('enlarging')
-        Photos.$photoDetail(photoId)
-        .then(function(response){
-            console.log(response.data.photo.image_url)
+    $scope.enlargePhoto = function(photo_url){
 
-            ModalService.showModal({
-            templateUrl: 'views/modal_photo.html',
-            controller: "ModalPhotoCtrl",
-            inputs: {
-                imageURL: response.data.photo.image_url,
-            }
-            }).then(function(modal) {
-                modal.element.modal();
-                modal.close.then(function() {
-                });
+        ModalService.showModal({
+        templateUrl: 'views/modal_photo.html',
+        controller: "ModalPhotoCtrl",
+        inputs: {
+            imageURL: photo_url,
+        }
+        }).then(function(modal) {
+            modal.element.modal();
+            modal.close.then(function() {
             });
-        })
-        .catch(function(errors){
-            console.log(errors.data);
-        })
-
+        });
     };
 
     $scope.login = function(){
@@ -74,10 +65,22 @@ angular.module('500pxChallengeApp')
         });
     }
 
-    $scope.likePhoto = function(photoId){
+    $scope.likePhoto = function($index, photoId){
         Photos.$likePhoto(photoId)
         .then(function(response){
             console.log(response.data);
+            $scope.photos[$index].voted = true;
+        })
+        .catch(function(errors){
+            console.log(errors.data);
+        })
+    }
+
+    $scope.unlikePhoto = function($index, photoId){
+        Photos.$unlikePhoto(photoId)
+        .then(function(response){
+            console.log(response.data);
+            $scope.photos[$index].voted = false;
         })
         .catch(function(errors){
             console.log(errors.data);

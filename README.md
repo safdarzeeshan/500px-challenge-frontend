@@ -1,11 +1,20 @@
-# 500px-challenge
+# 500px Code Challenge Front End
 
-This version allows a user to view the popular photographs on 500px and enlrage them by clicking on the modal
+## url - http://500px.zeeshansafdar.com
+
+This project is meant to consume the 500px code challenge api. The web application allows a user to:
+
+- Register w/ 500px Oauth
+- Login
+- View popular images on 500px
+- Expand a particular image
+- Like and image on 500px
+
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run `npm install` to get all the dependencies
 
-## Testing
+Run `grunt build` for building and `grunt serve` for preview.
 
-Running `grunt test` will run the unit tests with karma.
+Under app/scripts/services/ please change the `base url`

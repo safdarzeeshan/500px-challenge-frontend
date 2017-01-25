@@ -15,7 +15,7 @@ angular.module('500pxChallengeApp')
         //local
         // baseUrl = 'http://127.0.0.1:8000/api/';
         //prod
-        baseUrl = '500pxapi.zeeshansafdar.com/api/';
+        baseUrl = 'http://500pxapi.zeeshansafdar.com/api/';
 
     // Public API here
     authFactory.$authorizationUrl = function() {

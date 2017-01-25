@@ -3,39 +3,86 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
+@import 'photos';
+@import 'modal-photo';
+@import 'modal-login';
+
 
 body {
   padding: 0;
+  background-color: #ececec;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
+.loading{
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 12em;
+
+    i{
+        font-size: 6em;
+        color: #ececec;
+        opacity: 0.8;
+        margin-bottom: 10px;
+    }
+
+    h2{
+        font-weight: 100;
+    }
 }
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-  margin-bottom: 10px;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
+#menu{
+    background-color: white;
+    height: 60px;
+    -webkit-box-shadow: 0 1px 6px 0px #979797;
+    box-shadow: 0 1px 6px 0px #979797;
+    // -moz-box-shadow:    3px 3px 5px 6px #ccc;
+    border-radius: 0;
 }
 
+#navbar-brand{
+    line-height: 60px;
+    padding: 0;
+    margin: 0;
+    margin-left: 15px;
+    font-family: lato;
+    font-size: 16px;
+    font-variant: small-caps;
+}
+
+#navbar-login{
+
+    background: #0099e5;
+    color: #0099e5;
+    padding: 10px;
+    margin-top: 9px;
+    color: white;
+    opacity: 0.9;
+    font-size: 16px;
+    font-family: lato;
+    font-weight: 300;
+
+    &:hover{
+      opacity: 1;
+    }
+}
+
+#navbar-user{
+    line-height: 60px;
+    font-family: Times New Roman;
+    font-style: italic;
+    font-size: 16px;
+
+    a{
+      color: #212121;
+      opacity: 0.8;
+
+      &:hover{
+        opacity: 1;
+      }
+    }
+}
 /* Custom page footer */
 .footer {
   padding-top: 19px;
@@ -58,14 +105,15 @@ body {
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
 
-  p + h4 {
-    margin-top: 28px;
-  }
+
+button:focus, button:active, button.active, button:focus:active {
+  background-image: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {

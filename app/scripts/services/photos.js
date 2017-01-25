@@ -11,7 +11,10 @@ angular.module('500pxChallengeApp')
 .factory('Photos', function( $http, $cookies, $localStorage ) {
 
     var photosFactory = {},
-        baseUrl = 'http://127.0.0.1:8000/api/';
+        //local
+        // baseUrl = 'http://127.0.0.1:8000/api/';
+        //prod
+        baseUrl = '500pxapi.zeeshansafdar.com/api/';
 
     photosFactory.$popularPhotos = function() {
 
@@ -34,6 +37,14 @@ angular.module('500pxChallengeApp')
         return $http({
             method: 'GET',
             url: baseUrl + 'likephoto?photoId=' + photoId,
+        });
+    };
+
+    photosFactory.$unlikePhoto = function(photoId) {
+
+        return $http({
+            method: 'GET',
+            url: baseUrl + 'unlikephoto?photoId=' + photoId,
         });
     };
 

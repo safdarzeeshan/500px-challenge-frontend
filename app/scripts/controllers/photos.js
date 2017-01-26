@@ -18,15 +18,16 @@ angular.module('500pxChallengeApp')
         $scope.userStatus= 'user';
     }
 
+    //Get popular photos
     Photos.$popularPhotos()
     .then(function(response){
-        console.log(response)
         $scope.photos = response.data.photos
     })
     .catch(function(errors){
         console.log(errors.data);
     })
 
+    //When user clicks on a specific photo, a modal open with the photo enlarged
     $scope.enlargePhoto = function(photo_url){
 
         ModalService.showModal({
@@ -42,17 +43,7 @@ angular.module('500pxChallengeApp')
         });
     };
 
-    $scope.login = function(){
-        Auth.$authorizationUrl()
-        .then(function(response){
-            console.log(response.data)
-            $window.open(response.data.authorization_url, "_self");
-        })
-        .catch(function(errors){
-            console.log(errors.data);
-        })
-    }
-
+    //When a user not logged in tries to like a photo they are prompted to sign in
     $scope.ctaLogin = function(){
         ModalService.showModal({
         templateUrl: 'views/modal_login.html',
@@ -68,7 +59,7 @@ angular.module('500pxChallengeApp')
     $scope.likePhoto = function($index, photoId){
         Photos.$likePhoto(photoId)
         .then(function(response){
-            console.log(response.data);
+            //Once an image has been liked outlined heart changes to filled in heart
             $scope.photos[$index].voted = true;
         })
         .catch(function(errors){
@@ -89,22 +80,13 @@ angular.module('500pxChallengeApp')
 
 });
 
+//Controller to enlarge image modal
 angular.module('500pxChallengeApp')
     .controller('ModalPhotoCtrl', function($scope, close, imageURL) {
         $scope.imageURL = imageURL;
     });
 
+//Controller for login Modal
 angular.module('500pxChallengeApp')
     .controller('ModalLoginCtrl', function($scope, close) {
-
-        // $scope.login = function(){
-        //     Auth.$authorizationUrl()
-        //     .then(function(response){
-        //         console.log(response.data)
-        //         $window.open(response.data.authorization_url, "_self");
-        //     })
-        //     .catch(function(errors){
-        //         console.log(errors.data);
-        //     })
-        // }
 });

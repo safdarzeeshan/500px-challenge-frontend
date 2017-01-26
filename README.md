@@ -6,9 +6,9 @@ This project is meant to consume the 500px code challenge api. The web applicati
 
 - Register w/ 500px Oauth
 - Login
-- View popular images on 500px
-- Expand a particular image
-- Like and image on 500px
+- View popular photographs on 500px
+- Expand a particular photograph
+- Like and unlikes a photograph on 500px
 
 
 ## Build & development

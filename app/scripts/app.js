@@ -18,7 +18,7 @@ angular
     'angularModalService',
   ]).config(function($stateProvider, $httpProvider, $locationProvider, $urlRouterProvider){
 
-        // this is added so any request after logging in has the Auth Token in the header
+        // Auth Token is added in the header to send authorized request
         $httpProvider.interceptors.push(function ($cookies) {
             return {
                 'request': function (config) {
@@ -40,6 +40,7 @@ angular
 
         $stateProvider
 
+        //Parent route when user is not logged in
         .state('guest',{
             url:'/guest',
             templateUrl:'views/guest.html',
@@ -47,6 +48,7 @@ angular
             requireLogin:false
         })
 
+        //Parent route when user is logged in
         .state('user',{
             url:'/user',
             templateUrl:'views/user.html',
@@ -54,6 +56,7 @@ angular
             requireLogin:true
         })
 
+        // Image gallery state with user not logged in
         .state('guest.photos',{
             url:'/photos',
             templateUrl:'views/photos.html',
@@ -61,6 +64,7 @@ angular
             requireLogin:false
         })
 
+        // Image gallery state with user is logged in
         .state('user.photos',{
             url:'/photos',
             templateUrl:'views/photos.html',
@@ -68,6 +72,7 @@ angular
             requireLogin:true
         })
 
+        //After user's logs in with 500px they are redirected to this page
         .state('redirect',{
             url:'/redirect?oauth_token&oauth_verifier',
             templateUrl:'views/redirect.html',
@@ -78,13 +83,14 @@ angular
     }).run(function ($state, Auth, $rootScope) {
         $rootScope.$on('$stateChangeStart', function(event, toState){
 
-            //to validate a user can view either pages after logging in
+            //Validate that a user is loggged in to view a user page
             if (toState.requireLogin && !Auth.$isLoggedIn()){
 
                 $state.transitionTo('guest.photos');
                 event.preventDefault();
             }
 
+            //Validate that a user is not loggged in to view a guest page
             if (!toState.requireLogin && Auth.$isLoggedIn()){
 
                 $state.transitionTo('user.photos');

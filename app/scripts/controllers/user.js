@@ -9,6 +9,8 @@
  */
 angular.module('500pxChallengeApp')
 .controller('UserCtrl', function ($scope, Auth, $localStorage, $cookies, $state) {
+
+    //Get logged in user's details and populates user page with first name
     Auth.$user()
     .then(function(response){
         console.log(response)

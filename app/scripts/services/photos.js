@@ -11,11 +11,12 @@ angular.module('500pxChallengeApp')
 .factory('Photos', function( $http, $cookies, $localStorage ) {
 
     var photosFactory = {},
-        //local
+        //local API
         baseUrl = 'http://127.0.0.1:8000/api/';
-        //prod
+        //prod API
         // baseUrl = 'http://500pxapi.zeeshansafdar.com/api/';
 
+    //Get popular photos from 500px
     photosFactory.$popularPhotos = function() {
 
         return $http({
@@ -24,6 +25,7 @@ angular.module('500pxChallengeApp')
         });
     };
 
+    //Get individual photo details by passing photo ID
     photosFactory.$photoDetail = function(photoId) {
 
         return $http({
@@ -32,6 +34,7 @@ angular.module('500pxChallengeApp')
         });
     };
 
+    //Like specific photo. Actually a user votes for the photo which is a like
     photosFactory.$likePhoto = function(photoId) {
 
         return $http({
